@@ -240,6 +240,8 @@ services:
         target: /etc/open5gs/custom/amf.yaml
     depends_on:
       - v-nrf
+    volumes:
+      - "E:/Uni/WS2024-25/Mobile-Computing/Project/docker/configs/roaming/v-amf.yaml:/etc/open5gs/custom/v-amf.yaml"
 
   v-smf:
     container_name: v-smf

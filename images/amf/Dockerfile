@@ -32,10 +32,15 @@ RUN ldconfig
 # copy entrypoint script
 COPY ./entrypoint.sh /usr/local/bin/entrypoint.sh
 
+# Set executable permissions for the entrypoint script
+RUN chmod +x /usr/local/bin/entrypoint.sh
+
 # create directory to store the logs
 RUN mkdir -p /var/log/open5gs/
 
+# Define the entrypoint with the full path to the script
 ENTRYPOINT [ "entrypoint.sh" ]
+#ENTRYPOINT [ "/usr/local/bin/entrypoint.sh" ]
 
 # use CMD to provide arguments to ENTRYPOINT (can be overridden by user)
 CMD [ "-c", "/etc/open5gs/default/amf.yaml" ]
